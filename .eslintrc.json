@@ -15,14 +15,14 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 11,
+    "project": "./tsconfig.json",
     "sourceType": "module"
   },
   "plugins": [
@@ -30,7 +30,8 @@
     "react-hooks",
     "unused-imports",
     "simple-import-sort",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "prettier"
   ],
   "rules": {
     "linebreak-style": 0,
