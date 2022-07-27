@@ -30,6 +30,7 @@
     "react-hooks",
     "unused-imports",
     "simple-import-sort",
+    "import",
     "@typescript-eslint",
     "prettier"
   ],
@@ -51,7 +52,6 @@
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "semi": "off",
     "unused-imports/no-unused-imports": "warn",
     "unused-imports/no-unused-vars": "warn",
     "import/prefer-default-export": "off",
