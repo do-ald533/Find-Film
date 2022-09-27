@@ -4,4 +4,25 @@ article {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 2em;
+
+    strong {
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+    }
+
+    a {
+        margin-top: 0.75em;
+        text-decoration: none;
+        font-size: 1.25em;
+        background-color: #18aad3;
+        color: #fff;
+        padding: 0.5em 1em;
+        transition: 0.5s;
+    }
+
+    a:hover {
+        background-color: #0f7aa3;
+    }
+
 }

@@ -3,7 +3,9 @@ import './Home.module.scss';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-type TFilm = {
+import { useRequest } from '../../hooks';
+
+export type TFilm = {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -22,22 +24,14 @@ type TFilm = {
 
 export function Home() {
   const [films, setFilms] = useState<TFilm[]>([]);
-
-  async function getMovies(): Promise<any> {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${
-        import.meta.env.VITE_API_KEY
-      }&language=en-US&page=1`
-    );
-    const { results } = await response.json();
-    return results;
-  }
+  const result = useRequest(
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${
+      import.meta.env.VITE_API_KEY
+    }`
+  );
 
   useEffect(() => {
-    (async () => {
-      const results = getMovies();
-      setFilms(await results);
-    })();
+    setFilms(result.results);
   }, []);
 
   return (
