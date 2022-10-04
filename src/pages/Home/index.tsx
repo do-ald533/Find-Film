@@ -3,36 +3,25 @@ import './Home.module.scss';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useRequest } from '../../hooks';
-
-export type TFilm = {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-};
+import { useRequest } from '@/hooks';
+import { Film, Films } from '@/types';
 
 export function Home() {
-  const [films, setFilms] = useState<TFilm[]>([]);
-  const result = useRequest(
+  const [films, setFilms] = useState<Film[]>([]);
+  const { data, isError } = useRequest<Films>(
     `https://api.themoviedb.org/3/movie/now_playing?api_key=${
       import.meta.env.VITE_API_KEY
     }`
   );
 
   useEffect(() => {
-    setFilms(result.results);
+    if (data !== undefined) {
+      setFilms(data.results);
+    }
   }, []);
+  if (isError) {
+    return <h1>Error has occured</h1>;
+  }
 
   return (
     <div className='container'>
