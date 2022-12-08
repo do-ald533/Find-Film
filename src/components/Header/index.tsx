@@ -1,3 +1,5 @@
+import './Header.module.scss';
+
 export function Header() {
   return (
     <header>
